@@ -1,192 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Valentine Proposal 💖</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: white;
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-    overflow: hidden;
-  }
-
-  /* Dancing man sticker */
-  .man-image {
-    width: 150px;
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    color: #ff69b4; /* Pink */
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  button {
-    font-size: 18px;
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  /* Bounce animation */
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-  }
-
-  #yes {
-    background-color: #808000; /* Olive green */
-    color: white;
-    animation: bounce 1s infinite;
-  }
-
-  #no {
-    background-color: #ff69b4; /* Pink */
-    color: white;
-    animation: bounce 1s infinite alternate;
-    position: relative;
-  }
-
-  .floating-love {
-    position: absolute;
-    font-size: 24px;
-    animation: fall linear infinite;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(-50px); opacity:1; }
-    100% { transform: translateY(100vh); opacity:0; }
-  }
-
-  #surprise {
-    display: none;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    background: #ff69b4;
-    color: white;
-    cursor: pointer;
-  }
-
-  #surpriseMessage {
-    display: none;
-    color: #808000;
-    font-size: 22px;
-    text-align: center;
-    margin-top: 20px;
-    max-width: 90%;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mi Chiqui ❤️</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding: 20px;
+            transition: background-color 0.5s;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* Main screen styling */
+        .main-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        .title {
+            font-size: 3rem;
+            color: #ff4d8d;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .valentine-man {
+            position: relative;
+            width: 180px;
+            height: 220px;
+            margin: 30px auto;
+        }
+        
+        .man-body {
+            width: 60px;
+            height: 100px;
+            background-color: #4a4a4a;
+            border-radius: 30px 30px 0 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 80px;
+        }
+        
+        .man-head {
+            width: 70px;
+            height: 70px;
+            background-color: #f5d0a9;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+        }
+        
+        .love-sign {
+            width: 120px;
+            height: 60px;
+            background-color: #ff4d8d;
+            color: white;
+            border-radius: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .love-sign:after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #ff4d8d;
+        }
+        
+        .question {
+            font-size: 2.2rem;
+            color: #ff4d8d;
+            margin: 30px 0 40px 0;
+            line-height: 1.4;
+        }
+        
+        .rose {
+            color: #ff0000;
+            font-size: 2.5rem;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            position: relative;
+            height: 120px;
+        }
+        
+        .btn {
+            padding: 18px 45px;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+            position: absolute;
+            animation: bounce 2s infinite;
+        }
+        
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        }
+        
+        .yes-btn {
+            background-color: #808000; /* Olive green */
+            color: white;
+            left: 30%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+        
+        .no-btn {
+            background-color: #ff4d8d; /* Pink */
+            color: white;
+            right: 30%;
+            transform: translateX(50%);
+            z-index: 3;
+        }
+        
+        /* Yes screen styling */
+        .yes-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .yay-text {
+            font-size: 3.5rem;
+            color: #ff4d8d;
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+        
+        .love-emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        .surprise-btn {
+            background-color: #ff4d8d;
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 50px;
+            box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .surprise-btn:hover {
+            background-color: #ff3377;
+            transform: translateY(-3px);
+        }
+        
+        .surprise-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+        }
+        
+        /* Surprise screen styling */
+        .surprise-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            animation: fadeIn 1.5s ease-in-out;
+            padding: 20px;
+        }
+        
+        .surprise-text {
+            font-size: 2.2rem;
+            color: #333;
+            line-height: 1.5;
+            background-color: #fff9fb;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin-top: 30px;
+            border: 3px dashed #ff4d8d;
+        }
+        
+        .highlight {
+            color: #ff4d8d;
+            font-weight: bold;
+        }
+        
+        .date {
+            font-size: 2.5rem;
+            color: #ff4d8d;
+            margin: 20px 0;
+        }
+        
+        .instructions {
+            font-size: 1.8rem;
+            margin-top: 30px;
+            color: #333;
+        }
+        
+        .heart {
+            color: #ff4d8d;
+            font-size: 2rem;
+            margin: 0 5px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .title, .yay-text {
+                font-size: 2.5rem;
+            }
+            
+            .question {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 15px 35px;
+                font-size: 1.5rem;
+            }
+            
+            .buttons-container {
+                gap: 20px;
+            }
+            
+            .surprise-text {
+                font-size: 1.8rem;
+                padding: 25px;
+            }
+            
+            .date {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title, .yay-text {
+                font-size: 2rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1.3rem;
+            }
+            
+            .buttons-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                height: 180px;
+            }
+            
+            .yes-btn, .no-btn {
+                position: relative;
+                left: auto;
+                right: auto;
+                transform: none;
+            }
+            
+            .surprise-text {
+                font-size: 1.5rem;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Dancing man sticker -->
-  <img class="man-image" src="https://i.imgur.com/6LJ7dDk.gif" alt="Dancing man holding Love sign">
-
-  <!-- Main message -->
-  <h1>Would you be my Valentine, Mi chiqui? 🌹</h1>
-
-  <!-- Buttons -->
-  <div>
-    <button id="yes">YES 💚</button>
-    <button id="no">NO 💗</button>
-  </div>
-
-  <!-- Surprise button -->
-  <button id="surprise">Open for a surprise</button>
-  <div id="surpriseMessage">
-    We will be traveling tomorrow, Thursday, February 12th.<br>
-    Pack a small bag with something sexy and something casual.<br>
-    We will be leaving the house by 7 PM.
-  </div>
-
-<script>
-const noBtn = document.getElementById("no");
-const yesBtn = document.getElementById("yes");
-const mainText = document.querySelector("h1");
-const surpriseBtn = document.getElementById("surprise");
-const surpriseMsg = document.getElementById("surpriseMessage");
-
-// NO button behavior
-const noMessages = [
-  "Are you sure my baby?",
-  "Do you want to think about it?",
-  "Pretty please?",
-  "I will buy you food 😊",
-  "Last chance…"
-];
-let clickCount = 0;
-
-noBtn.addEventListener("click", () => {
-  if(clickCount < noMessages.length) {
-    mainText.textContent = noMessages[clickCount];
-    yesBtn.style.transform = `scale(${1 + clickCount*0.2})`;
-    clickCount++;
-  }
-  if(clickCount === noMessages.length) {
-    noBtn.style.display = "none"; // remove NO button
-  }
-});
-
-// YES button click
-yesBtn.addEventListener("click", () => {
-  document.body.innerHTML = `
-    <div style="
-      height:100vh;
-      width:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      background:white;
-      font-family:'Comic Sans MS', cursive;
-      text-align:center;
-      overflow:hidden;
-      position:relative;
-    ">
-      <h1 style="font-size:32px; color:#ff69b4;">Yay! Thank you for making me your Valentine 😊</h1>
-      <button id="surprise" style="
-        margin-top:20px; padding:10px 20px; font-size:18px; border-radius:10px; background:#ff69b4; color:white; cursor:pointer;
-      ">Open for a surprise</button>
-      <div id="surpriseMessage" style="display:none; color:#808000; font-size:22px; margin-top:20px; max-width:90%;"></div>
+    <div class="container">
+        <!-- Main Screen -->
+        <div class="main-screen" id="mainScreen">
+            <h1 class="title">For My Chiqui ❤️</h1>
+            
+            <div class="valentine-man">
+                <div class="love-sign">LOVE</div>
+                <div class="man-head"></div>
+                <div class="man-body"></div>
+            </div>
+            
+            <div class="question">
+                Would you be my Valentine, Mi chiqui? <span class="rose">🌹</span>
+            </div>
+            
+            <div class="buttons-container">
+                <button class="btn yes-btn" id="yesBtn">YES</button>
+                <button class="btn no-btn" id="noBtn">NO</button>
+            </div>
+        </div>
+        
+        <!-- Yes Screen -->
+        <div class="yes-screen" id="yesScreen">
+            <h1 class="yay-text">Yay! Thank you for making me your Valentine 😊</h1>
+            <div id="emojiContainer"></div>
+            <button class="surprise-btn" id="surpriseBtn">Open for a surprise</button>
+        </div>
+        
+        <!-- Surprise Screen -->
+        <div class="surprise-screen" id="surpriseScreen">
+            <h1 class="title">Your Surprise Awaits! <span class="heart">❤️</span></h1>
+            <div class="date">Thursday, February 12th</div>
+            <div class="surprise-text">
+                We will be traveling tomorrow, <span class="highlight">Thursday, February 12th</span>. 
+                <br><br>
+                Pack a small bag with <span class="highlight">something sexy</span> and <span class="highlight">something casual</span>.
+                <br><br>
+                We will be leaving the house by <span class="highlight">7 PM</span>.
+            </div>
+            <div class="instructions">
+                Get ready for an amazing time together! <span class="heart">❤️</span>
+            </div>
+        </div>
     </div>
-  `;
 
-  // Floating hearts
-  function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("floating-love");
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.fontSize = (20 + Math.random()*20) + "px";
-    heart.textContent = ["❤️","😍","💘","💖","💝"][Math.floor(Math.random()*5)];
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(), 5000);
-  }
-  setInterval(createHeart, 200); // more hearts, faster
-
-  // Surprise button
-  const surpriseBtn = document.getElementById("surprise");
-  const surpriseMsg = document.getElementById("surpriseMessage");
-  surpriseBtn.addEventListener("click", () => {
-    surpriseMsg.style.display = "block";
-    surpriseBtn.style.display = "none"; // hide button after click
-  });
-});
-</script>
+    <script>
+        // DOM Elements
+        const mainScreen = document.getElementById('mainScreen');
+        const yesScreen = document.getElementById('yesScreen');
+        const surpriseScreen = document.getElementById('surpriseScreen');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const emojiContainer = document.getElementById('emojiContainer');
+        
+        // No button texts
+        const noButtonTexts = [
+            "Are you sure my baby?",
+            "Do you want to think about it?",
+            "Pretty please?",
+            "I will buy you food 😊",
+            "Last chance..."
+        ];
+        
+        // Variables
+        let noClickCount = 0;
+        let yesBtnSize = 1;
+        const emojis = ["❤️", "😍", "🥰", "💖", "💕", "😘", "💘", "💝"];
+        
+        // No button click handler
+        noBtn.addEventListener('click', function() {
+            if (noClickCount < noButtonTexts.length) {
+                // Change the text of the no button
+                noBtn.textContent = noButtonTexts[noClickCount];
+                noClickCount++;
+                
+                // Increase the size of the yes button
+                yesBtnSize += 0.3;
+                yesBtn.style.transform = `scale(${yesBtnSize})`;
+                
+                // After the last text change, make the yes button cover the no button
+                if (noClickCount === noButtonTexts.length) {
+                    // Make yes button very large to cover no button
+                    yesBtnSize += 1.5;
+                    yesBtn.style.transform = `scale(${yesBtnSize})`;
+                    yesBtn.style.zIndex = "10";
+                    
+                    // Disable no button after a short delay
+                    setTimeout(() => {
+                        noBtn.style.pointerEvents = "none";
+                        noBtn.style.opacity = "0.5";
+                    }, 500);
+                }
+            }
+        });
+        
+        // Yes button click handler
+        yesBtn.addEventListener('click', function() {
+            // Hide main screen and show yes screen
+            mainScreen.style.display = 'none';
+            yesScreen.style.display = 'flex';
+            
+            // Create falling emojis
+            createFallingEmojis();
+        });
+        
+        // Surprise button click handler
+        surpriseBtn.addEventListener('click', function() {
+            // Hide yes screen and show surprise screen
+            yesScreen.style.display = 'none';
+            surpriseScreen.style.display = 'flex';
+        });
+        
+        // Function to create falling love emojis
+        function createFallingEmojis() {
+            // Clear any existing emojis
+            emojiContainer.innerHTML = '';
+            
+            // Create 30 falling emojis
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const emoji = document.createElement('div');
+                    emoji.classList.add('love-emoji');
+                    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    
+                    // Random position and animation
+                    emoji.style.left = `${Math.random() * 100}%`;
+                    emoji.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
+                    emoji.style.animation = `fall ${Math.random() * 3 + 4}s linear forwards`;
+                    
+                    emojiContainer.appendChild(emoji);
+                    
+                    // Remove emoji after animation completes
+                    setTimeout(() => {
+                        if (emoji.parentNode) {
+                            emoji.parentNode.removeChild(emoji);
+                        }
+                    }, 7000);
+                }, i * 300);
+            }
+            
+            // Continue creating emojis every 10 seconds
+            setInterval(() => {
+                const emoji = document.createElement('div');
+                emoji.classList.add('love-emoji');
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                
+                // Random position and animation
+                emoji.style.left = `${Math.random() * 100}%`;
+                emoji.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
+                emoji.style.animation = `fall ${Math.random() * 3 + 4}s linear forwards`;
+                
+                emojiContainer.appendChild(emoji);
+                
+                // Remove emoji after animation completes
+                setTimeout(() => {
+                    if (emoji.parentNode) {
+                        emoji.parentNode.removeChild(emoji);
+                    }
+                }, 7000);
+            }, 3000);
+        }
+        
+        // Add some initial animation to the buttons
+        setTimeout(() => {
+            yesBtn.style.animation = "bounce 2s infinite";
+            noBtn.style.animation = "bounce 2s infinite 0.2s";
+        }, 1000);
+    </script>
 </body>
 </html>
